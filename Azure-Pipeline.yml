@@ -1,0 +1,18 @@
+# azure-pipelines.yml
+# Pipeline mínimo: imprime "Hola mundo" en cada push a main y en PRs hacia main.
+
+trigger:
+- main           # ejecuta en pushes a main
+
+pr:
+- main           # ejecuta como validación de PR hacia main
+
+pool:
+  vmImage: 'windows-latest'  # agente hospedado por Microsoft
+
+steps:
+- script: echo Hola mundo desde CMD
+  displayName: 'Hello (CMD)'
+
+- powershell: Write-Host "Hola mundo desde PowerShell"
+  displayName: 'Hello (PowerShell)'
